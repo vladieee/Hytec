@@ -13,9 +13,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['contact_id'])) {
         $status = "Data restored";
 
         
+        if ($stmt->execute()) {
+            // restoration successful
+            header("Location:  contacts-list-archived.php?status=Data restored");
+            exit();
+        } else {
+            // restoration failed
+            header("Location:  contacts-list-archived.php?status=error");
+            exit();
+        }
+    } else {
+        // Redirect if accessed directly
         header("Location: contacts-list-archived.php");
-        exit();  
-}
+        exit();
+    }
 ?>
 
 

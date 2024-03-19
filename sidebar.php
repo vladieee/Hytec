@@ -135,6 +135,11 @@ require_once("includes/connect.php");
                     <i class="fas fa-fw fa-ellipsis-h"></i>
                     <span>Status</span></a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="">
+                    <i class="fas fa-fw fa-ellipsis-h"></i>
+                    <span>Status</span></a>
+            </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
