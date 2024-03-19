@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 14, 2024 at 09:47 AM
+-- Generation Time: Mar 19, 2024 at 03:51 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -20,6 +20,28 @@ SET time_zone = "+00:00";
 --
 -- Database: `crm`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin`
+--
+
+CREATE TABLE `admin` (
+  `admin_id` int(255) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `password_hash` varchar(255) NOT NULL,
+  `fName` varchar(255) NOT NULL,
+  `lName` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`admin_id`, `email`, `password_hash`, `fName`, `lName`) VALUES
+(17, 'vladimer.ilagor@gmail.com', '$2y$10$PMQ6Soy1Az1gNVZg9YMGAuOsnyRMrWIXClzv742xiihg1KuS9G6ee', 'Vladimer', 'Ilagor'),
+(18, 'vladimer.ilagor@gmail.coms', '$2y$10$PBDzuZZ7TJaBXnexQXcSkePDYE3RXQSokvfoZDiBh.LPG8EDxoZqe', 'Vladimer', 'Ilagor');
 
 -- --------------------------------------------------------
 
@@ -42,43 +64,8 @@ CREATE TABLE `contacts` (
 --
 
 INSERT INTO `contacts` (`contacts_ID`, `fName`, `lName`, `cNum`, `eMail`, `cPrice`, `isDeleted`) VALUES
-(9, 'sdasda', 'dasda', '3534', 'sda@gmail.com', 0, 'yes'),
-(10, 'sada', 'sdad', '342', 'das@jdma', 0, 'yes'),
-(13, 'qweqwe', 'wqeqweqweq', '1231q', 'qweqwe@tasasdwaqw.com', 0, 'no'),
-(14, 'Vladimer', 'Ilagor', '09123456789', 'vladimer.ilagor@gmail.com', 0, 'no');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `contacts_deleted`
---
-
-CREATE TABLE `contacts_deleted` (
-  `contDel_ID` int(50) NOT NULL,
-  `contacts_ID` int(50) NOT NULL,
-  `fName` varchar(255) DEFAULT NULL,
-  `lName` varchar(255) DEFAULT NULL,
-  `cNum` varchar(255) DEFAULT NULL,
-  `eMail` varchar(255) DEFAULT NULL,
-  `isDeleted` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `contacts_deleted`
---
-
-INSERT INTO `contacts_deleted` (`contDel_ID`, `contacts_ID`, `fName`, `lName`, `cNum`, `eMail`, `isDeleted`) VALUES
-(2, 4, 'asdas', 'sdad', '123913', 'ada@gmail.com', 'yes'),
-(3, 4, 'asdas', 'sdad', '123913', 'ada@gmail.com', 'yes'),
-(4, 4, 'asdas', 'sdad', '123913', 'ada@gmail.com', 'yes'),
-(5, 4, 'asdas', 'sdad', '123913', 'ada@gmail.com', 'yes'),
-(6, 4, 'asdas', 'sdad', '123913', 'ada@gmail.com', 'yes'),
-(7, 7, 'asdadm', 'mkdak', '12131', 'dsad@gmail.com', 'yes'),
-(8, 11, 'asda', 'adad', '872131', 'asda@nasdl', 'yes'),
-(9, 8, 'hi', 'hello', '1231312312', 'hsjdak@gmail.com', 'yes'),
-(10, 13, 'qweqwe', 'wqeqweqweq', '123123213', 'qweqwe@tasasdwaqw.com', 'yes'),
-(11, 9, 'sdasda', 'dasda', '3534', 'sda@gmail.com', 'yes'),
-(12, 10, 'sada', 'sdad', '342', 'das@jdma', 'yes');
+(23, 'ryan', 'quibol', '930242', 'hjdka@ksaj', 0, 'no'),
+(27, 'Ddasds', 'Asdsa', '09123456789', 'dsasa@email.com', 0, 'no');
 
 -- --------------------------------------------------------
 
@@ -101,25 +88,26 @@ CREATE TABLE `events` (
 --
 
 INSERT INTO `events` (`id`, `title`, `description`, `deleted`, `start_date`, `end_date`, `created_on`) VALUES
-(1, 'Title 1', 'This the Description of title 1', 0, '2024-03-12', '2024-03-14', NULL),
+(1, 'Title 1', 'This the Description of title 1', 1, '2024-03-12', '2024-03-14', NULL),
 (2, 'sdkfj', 'ksdgjfskdf', 1, '2024-03-12', '2024-03-14', NULL),
-(3, 'asdas', 'asdasdasd', 1, '2024-03-13', '2024-03-21', NULL);
+(3, 'asdas', 'asdasdasd', 1, '2024-03-13', '2024-03-21', NULL),
+(4, 'BLACK FRIDAY', 'Nigga', 1, '2024-02-26', '2024-03-22', NULL);
 
 --
 -- Indexes for dumped tables
 --
 
 --
+-- Indexes for table `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`admin_id`);
+
+--
 -- Indexes for table `contacts`
 --
 ALTER TABLE `contacts`
   ADD PRIMARY KEY (`contacts_ID`);
-
---
--- Indexes for table `contacts_deleted`
---
-ALTER TABLE `contacts_deleted`
-  ADD PRIMARY KEY (`contDel_ID`);
 
 --
 -- Indexes for table `events`
@@ -132,22 +120,22 @@ ALTER TABLE `events`
 --
 
 --
+-- AUTO_INCREMENT for table `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `admin_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
+--
 -- AUTO_INCREMENT for table `contacts`
 --
 ALTER TABLE `contacts`
-  MODIFY `contacts_ID` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
-
---
--- AUTO_INCREMENT for table `contacts_deleted`
---
-ALTER TABLE `contacts_deleted`
-  MODIFY `contDel_ID` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `contacts_ID` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
